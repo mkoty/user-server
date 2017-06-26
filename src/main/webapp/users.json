@@ -1,0 +1,44 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Stepan",
+      "lastName": "Sichkar",
+      "fatherName": "Sergeevich",
+      "birthDay": "08-07-1989",
+      "adress": "Kurskaya 31-60"
+    },
+    {
+      "id": "2",
+      "name": "Ivan",
+      "lastName": "Ivanov",
+      "fatherName": "Ivanovich",
+      "birthDay": "01-01-1990",
+      "adress": "Nevskiy 1"
+    },
+    {
+      "id": "3",
+      "name": "Timofey",
+      "lastName": "Timofeev",
+      "fatherName": "Timofeevich",
+      "birthDay": "02-02-1982",
+      "adress": "Mira 3"
+    },
+    {
+      "id": "4",
+      "name": "Pavel",
+      "lastName": "Pavlov",
+      "fatherName": "Pavlovich",
+      "birthDay": "03-03-1993",
+      "adress": "Lenina 4"
+    },
+    {
+      "id": "5",
+      "name": "Petr",
+      "lastName": "Petrov",
+      "fatherName": "Petrovich",
+      "birthDay": "09-09-1999",
+      "adress": "Pravdy 5"
+    }
+  ]
+}
