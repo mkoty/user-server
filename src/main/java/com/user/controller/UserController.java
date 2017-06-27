@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by stepan.sichkar on 6/20/2017.
@@ -72,7 +73,7 @@ public class UserController {
         return fatherNames;
     }
 
-    @RequestMapping(value = "/user", method = RequestMethod.POST)
+    @RequestMapping(value = "/userById", method = RequestMethod.POST)
     public String getUserById(@RequestParam String userId) {
 
         List<User> users = manager.getUsers();
@@ -83,6 +84,28 @@ public class UserController {
                         .findFirst()
                         .orElse(null)
         );
+    }
+
+    @RequestMapping(value = "/usersByFullName", method = RequestMethod.POST)
+    public List getUserByFullName(@RequestParam(value = "name", defaultValue = "") String name,
+                                        @RequestParam(value = "lastName", defaultValue = "") String lastName,
+                                        @RequestParam(value = "fatherName", defaultValue = "") String fatherName) {
+
+        if (name.isEmpty() && lastName.isEmpty() && fatherName.isEmpty()) {
+            return new ArrayList();
+        }
+
+        List<User> users = manager.getUsers();
+
+        List filteredUsers;
+
+        filteredUsers = users.stream()
+                .filter(user -> name.isEmpty() ? true : user.getName().toLowerCase().equals(name.toLowerCase()))
+                .filter(user -> lastName.isEmpty() ? true : user.getLastName().toLowerCase().equals(lastName.toLowerCase()))
+                .filter(user -> fatherName.isEmpty() ? true : user.getFatherName().toLowerCase().equals(fatherName.toLowerCase()))
+                .collect(Collectors.toList());
+
+        return filteredUsers;
     }
 
 }
