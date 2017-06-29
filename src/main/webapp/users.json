@@ -79,6 +79,14 @@
       "fatherName": "Petrovich",
       "birthDay": "08-08-2008",
       "adress": "Unosti 8"
+    },
+    {
+      "id": "11",
+      "name": "Sergey",
+      "lastName": "Sichkar",
+      "fatherName": "Pavlovich",
+      "birthDay": "05-03-1965",
+      "adress": "Lenina 41-242"
     }
   ]
 }

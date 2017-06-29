@@ -31,13 +31,21 @@ public class UserController {
     }
 
     @RequestMapping(value = "/names", method = RequestMethod.POST)
-    public Set<String> getUserNames(@RequestParam String prefix) {
+    public Set<String> getUserNames(@RequestParam(value = "name", defaultValue = "") String name,
+                                    @RequestParam(value = "lastName", defaultValue = "") String lastName,
+                                    @RequestParam(value = "fatherName", defaultValue = "") String fatherName) {
 
         List<User> users = manager.getUsers();
         Set<String> names = new HashSet<String>();
+        List<User> filteredUsers;
 
-        users.forEach(user -> {
-            if (user.getName().toLowerCase().startsWith(prefix.toLowerCase())) {
+        filteredUsers = users.stream()
+                .filter(user -> lastName.isEmpty() ? true : user.getLastName().toLowerCase().equals(lastName.toLowerCase()))
+                .filter(user -> fatherName.isEmpty() ? true : user.getFatherName().toLowerCase().equals(fatherName.toLowerCase()))
+                .collect(Collectors.toList());
+
+        filteredUsers.forEach(user -> {
+            if (user.getName().toLowerCase().startsWith(name.toLowerCase())) {
                 names.add(user.getName());
             }
         });
@@ -46,13 +54,21 @@ public class UserController {
     }
 
     @RequestMapping(value = "/lastNames", method = RequestMethod.POST)
-    public Set<String> getUserLastNames(@RequestParam String prefix) {
+    public Set<String> getUserLastNames(@RequestParam(value = "name", defaultValue = "") String name,
+                                        @RequestParam(value = "lastName", defaultValue = "") String lastName,
+                                        @RequestParam(value = "fatherName", defaultValue = "") String fatherName) {
 
         List<User> users = manager.getUsers();
         Set<String> lastNames = new HashSet<String>();
+        List<User> filteredUsers;
 
-        users.forEach(user -> {
-            if (user.getLastName().toLowerCase().startsWith(prefix.toLowerCase())) {
+        filteredUsers = users.stream()
+                .filter(user -> name.isEmpty() ? true : user.getName().toLowerCase().equals(name.toLowerCase()))
+                .filter(user -> fatherName.isEmpty() ? true : user.getFatherName().toLowerCase().equals(fatherName.toLowerCase()))
+                .collect(Collectors.toList());
+
+        filteredUsers.forEach(user -> {
+            if (user.getLastName().toLowerCase().startsWith(lastName.toLowerCase())) {
                 lastNames.add(user.getLastName());
             }
         });
@@ -61,13 +77,21 @@ public class UserController {
     }
 
     @RequestMapping(value = "/fatherNames", method = RequestMethod.POST)
-    public Set<String> getUserFatherNames(@RequestParam String prefix) {
+    public Set<String> getUserFatherNames(@RequestParam(value = "name", defaultValue = "") String name,
+                                          @RequestParam(value = "lastName", defaultValue = "") String lastName,
+                                          @RequestParam(value = "fatherName", defaultValue = "") String fatherName) {
 
         List<User> users = manager.getUsers();
         Set<String> fatherNames = new HashSet<String>();
+        List<User> filteredUsers;
 
-        users.forEach(user -> {
-            if (user.getFatherName().toLowerCase().startsWith(prefix.toLowerCase())) {
+        filteredUsers = users.stream()
+                .filter(user -> name.isEmpty() ? true : user.getName().toLowerCase().equals(name.toLowerCase()))
+                .filter(user -> lastName.isEmpty() ? true : user.getLastName().toLowerCase().equals(lastName.toLowerCase()))
+                .collect(Collectors.toList());
+
+        filteredUsers.forEach(user -> {
+            if (user.getFatherName().toLowerCase().startsWith(fatherName.toLowerCase())) {
                 fatherNames.add(user.getFatherName());
             }
         });
@@ -90,8 +114,8 @@ public class UserController {
 
     @RequestMapping(value = "/usersByFullName", method = RequestMethod.POST)
     public List getUserByFullName(@RequestParam(value = "name", defaultValue = "") String name,
-                                        @RequestParam(value = "lastName", defaultValue = "") String lastName,
-                                        @RequestParam(value = "fatherName", defaultValue = "") String fatherName) {
+                                  @RequestParam(value = "lastName", defaultValue = "") String lastName,
+                                  @RequestParam(value = "fatherName", defaultValue = "") String fatherName) {
 
         if (name.isEmpty() && lastName.isEmpty() && fatherName.isEmpty()) {
             return new ArrayList();
