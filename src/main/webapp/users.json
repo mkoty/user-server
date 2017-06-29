@@ -87,6 +87,14 @@
       "fatherName": "Pavlovich",
       "birthDay": "05-03-1965",
       "adress": "Lenina 41-242"
+    },
+    {
+      "id": "12",
+      "name": "Pavel",
+      "lastName": "Sichkar",
+      "fatherName": "Trofimovich",
+      "birthDay": "01-01-1943",
+      "adress": "Lenina 41-242"
     }
   ]
 }
