@@ -39,6 +39,46 @@
       "fatherName": "Petrovich",
       "birthDay": "09-09-1999",
       "adress": "Pravdy 5"
+    },
+    {
+      "id": "6",
+      "name": "Stepan",
+      "lastName": "Sichkar",
+      "fatherName": "Sergeevich",
+      "birthDay": "01-01-1990",
+      "adress": "SPb, Gavrskaya 8"
+    },
+    {
+      "id": "7",
+      "name": "Ivan",
+      "lastName": "Ivanov",
+      "fatherName": "Timofeevich",
+      "birthDay": "12-12-1992",
+      "adress": "Maroseyka 12"
+    },
+    {
+      "id": "8",
+      "name": "Timofey",
+      "lastName": "Timofeev",
+      "fatherName": "Ivanovich",
+      "birthDay": "11-11-2011",
+      "adress": "Bolotnaya 11"
+    },
+    {
+      "id": "9",
+      "name": "Pavel",
+      "lastName": "Pavlov",
+      "fatherName": "Petrovich",
+      "birthDay": "10-10-2010",
+      "adress": "Gagarina 10"
+    },
+    {
+      "id": "10",
+      "name": "Petr",
+      "lastName": "Petrov",
+      "fatherName": "Petrovich",
+      "birthDay": "08-08-2008",
+      "adress": "Unosti 8"
     }
   ]
 }

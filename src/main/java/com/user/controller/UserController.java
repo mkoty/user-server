@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -29,10 +31,10 @@ public class UserController {
     }
 
     @RequestMapping(value = "/names", method = RequestMethod.POST)
-    public List<String> getUserNames(@RequestParam String prefix) {
+    public Set<String> getUserNames(@RequestParam String prefix) {
 
         List<User> users = manager.getUsers();
-        List<String> names = new ArrayList<String>();
+        Set<String> names = new HashSet<String>();
 
         users.forEach(user -> {
             if (user.getName().toLowerCase().startsWith(prefix.toLowerCase())) {
@@ -44,10 +46,10 @@ public class UserController {
     }
 
     @RequestMapping(value = "/lastNames", method = RequestMethod.POST)
-    public List<String> getUserLastNames(@RequestParam String prefix) {
+    public Set<String> getUserLastNames(@RequestParam String prefix) {
 
         List<User> users = manager.getUsers();
-        List<String> lastNames = new ArrayList<String>();
+        Set<String> lastNames = new HashSet<String>();
 
         users.forEach(user -> {
             if (user.getLastName().toLowerCase().startsWith(prefix.toLowerCase())) {
@@ -59,10 +61,10 @@ public class UserController {
     }
 
     @RequestMapping(value = "/fatherNames", method = RequestMethod.POST)
-    public List<String> getUserFatherNames(@RequestParam String prefix) {
+    public Set<String> getUserFatherNames(@RequestParam String prefix) {
 
         List<User> users = manager.getUsers();
-        List<String> fatherNames = new ArrayList<String>();
+        Set<String> fatherNames = new HashSet<String>();
 
         users.forEach(user -> {
             if (user.getFatherName().toLowerCase().startsWith(prefix.toLowerCase())) {
