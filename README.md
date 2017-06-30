@@ -11,6 +11,7 @@ Clone the repository and install all dependencies
     $ git clone git@github.com:mkoty/user-server.git
     $ cd user-server
     $ mvn install
+    $ mvn build
 
 thats it.
 
