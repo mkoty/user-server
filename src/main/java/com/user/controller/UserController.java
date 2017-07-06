@@ -2,7 +2,6 @@ package com.user.controller;
 
 import com.user.entity.User;
 import com.user.manager.UserManager;
-import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,9 +22,9 @@ public class UserController {
     UserManager manager;
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)
-    public JSONObject getAllUsers() {
+    public List<User> getAllUsers() {
 
-        JSONObject users = manager.getUsersAsJson();
+        List<User> users = manager.getUsers();
 
         return users;
     }
@@ -100,16 +99,14 @@ public class UserController {
     }
 
     @RequestMapping(value = "/userById", method = RequestMethod.POST)
-    public String getUserById(@RequestParam String userId) {
+    public User getUserById(@RequestParam String userId) {
 
         List<User> users = manager.getUsers();
 
-        return manager.getUserAsJson(
-                users.stream()
-                        .filter(u -> u.getId().equals(userId))
-                        .findFirst()
-                        .orElse(null)
-        );
+        return users.stream()
+                .filter(u -> u.getId().equals(userId))
+                .findFirst()
+                .orElse(null);
     }
 
     @RequestMapping(value = "/usersByFullName", method = RequestMethod.POST)
