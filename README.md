@@ -17,6 +17,6 @@ thats it.
 
 ### Development
 
-Open project in IDEA ide and setup tomcat server on 9000 port;
-add .war file to tomcat deploytment
-press run
+Open project in IDEA ide and setup tomcat server on 9000 port;  
+add .war file to tomcat deploytment  
+press run  
